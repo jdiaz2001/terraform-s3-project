@@ -1,15 +1,26 @@
-resource "aws_cloudfront_distribution" "static_site" {
-  origin {
-    domain_name = aws_s3_bucket_website_configuration.static_website.website_endpoint
-    origin_id   = "s3-static-site"
+# This Terraform configuration file sets up an AWS CloudFront distribution with an 
+# Origin Access Control (OAC) for secure access to a private S3 bucket. The configuration 
+# Creates an Origin Access Control (OAC) for secure access to the S3 bucket.
+resource "aws_cloudfront_origin_access_control" "oac" {
+  name                              = "s3-oac-access"
+  description                       = "OAC for private S3 access"
+  origin_access_control_origin_type = "s3"
+  signing_behavior                  = "always"
+  signing_protocol                  = "sigv4"
+}
 
-    custom_origin_config {
-      http_port              = 80
-      https_port             = 443
-      origin_protocol_policy = "http-only"
-      origin_ssl_protocols   = ["TLSv1.2"]
-    }
+resource "aws_cloudfront_distribution" "static_site" {
+origin {
+  domain_name = aws_s3_bucket.static_website_bucket.bucket_regional_domain_name
+  origin_id   = "s3-static-site"
+
+  origin_access_control_id = aws_cloudfront_origin_access_control.oac.id
+
+# The `origin_access_identity` field in `s3_origin_config` is required but left empty 
+  s3_origin_config {
+    origin_access_identity = "" # Required, even though we're using OAC
   }
+}
 
   enabled             = true
   is_ipv6_enabled     = true
@@ -46,9 +57,9 @@ resource "aws_cloudfront_distribution" "static_site" {
   }
 
   aliases = [var.domain, "www.${var.domain}"]
-  
-  # WAFv2 Web ACL association
+
   web_acl_id = aws_wafv2_web_acl.cloudfront_waf.arn
+
   tags = {
     Name = "Static Website Distribution"
   }

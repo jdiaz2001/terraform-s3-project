@@ -4,14 +4,13 @@ This project is a Terraform configuration for provisioning and managing an Amazo
 
 ## Features
 
-- Creates an S3 bucket with customizable settings.
-- Configurable bucket versioning and encryption.
+- Create an S3 bucket as static website, 
+- The bucket will be the origin for cloudFront.
 - Optional public access block configuration.
 - Supports tagging for resource identification.
 
 ## Prerequisites
 
-- [Terraform](https://www.terraform.io/downloads.html) installed (version 1.0 or later).
 - AWS CLI installed and configured with appropriate credentials.
 - An AWS account with permissions to create S3 buckets.
 
