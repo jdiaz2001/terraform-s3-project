@@ -1,6 +1,6 @@
 resource "aws_acm_certificate" "cert" {
-  domain_name       = "test.mynsmdev.org"
-  subject_alternative_names = ["www.test.mynsmdev.org"]
+  domain_name       = var.domain
+  subject_alternative_names = ["www.${var.domain}"]
   validation_method = "DNS"
 
   lifecycle {
@@ -22,7 +22,7 @@ resource "aws_route53_record" "cert_validation" {
   records         = [each.value.record]
   ttl             = 60
   type            = each.value.type
-  zone_id         = "Z065277218A3R0XLURN6W"
+  zone_id         = var.route53_zone_id
 }
 
 resource "aws_acm_certificate_validation" "cert" {

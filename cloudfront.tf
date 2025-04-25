@@ -45,7 +45,7 @@ resource "aws_cloudfront_distribution" "static_site" {
     minimum_protocol_version = "TLSv1.2_2021"
   }
 
-  aliases = ["test.mynsmdev.org", "www.test.mynsmdev.org"]
+  aliases = [var.domain, "www.${var.domain}"]
 
   tags = {
     Name = "Static Website Distribution"
