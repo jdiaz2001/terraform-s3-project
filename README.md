@@ -40,17 +40,18 @@ This project is a Terraform configuration. It sets up a secure and scalable stat
 ## Prerequisites
 
 - `AWS CLI Installed:` Ensure the AWS CLI is installed on your local machine.
+- `Terraform Installed:` Ensure Terraform is installed on your local machine.
 - `AWS IAM Identity Center (SSO):` We'll use AWS IAM Identity Center to provision access for our user.
 - `SSO Authentication:` The user will authenticate via SSO into the target AWS account where resources will be deployed.
 
 - `Review and customize` the variables in `variables.tf` or create a `terraform.tfvars` file to override defaults.
 
-| Variable           | Description                          | 
-|--------------------|--------------------------------------|
-| `domain`           | Domain name for the website          |
-| `aws region`       | AWS region for the bucket            |
-| `profile`          | AWS SSO Profile to be used           |
-| `route53`          | ZXXXX ... Domain Hosted Zone ID      |
+    | Variable           | Description                          | 
+    |--------------------|--------------------------------------|
+    | `domain`           | Domain name for the website          |
+    | `aws region`       | AWS region for the bucket            |
+    | `profile`          | AWS SSO Profile to be used           |
+    | `route53`          | ZXXXX ... Domain Hosted Zone ID      |
 
 
 ## Architecture Diagram
@@ -75,7 +76,7 @@ Below is the architecture diagram for the Terraform S3 Project:
     ```bash
     terraform init
     ```
-    
+
 4. Plan the infrastructure changes:
     ```bash
     terraform plan
