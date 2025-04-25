@@ -46,7 +46,9 @@ resource "aws_cloudfront_distribution" "static_site" {
   }
 
   aliases = [var.domain, "www.${var.domain}"]
-
+  
+  # WAFv2 Web ACL association
+  web_acl_id = aws_wafv2_web_acl.cloudfront_waf.arn
   tags = {
     Name = "Static Website Distribution"
   }
