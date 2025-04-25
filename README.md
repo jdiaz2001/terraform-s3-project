@@ -43,6 +43,16 @@ This project is a Terraform configuration. It sets up a secure and scalable stat
 - `AWS IAM Identity Center (SSO):` We'll use AWS IAM Identity Center to provision access for our user.
 - `SSO Authentication:` The user will authenticate via SSO into the target AWS account where resources will be deployed.
 
+- `Review and customize` the variables in `variables.tf` or create a `terraform.tfvars` file to override defaults.
+
+| Variable           | Description                          | 
+|--------------------|--------------------------------------|
+| `domain`           | Domain name for the website          |
+| `aws region`       | AWS region for the bucket            |
+| `profile`          | AWS SSO Profile to be used           |
+| `route53`          | ZXXXX ... Domain Hosted Zone ID      |
+
+
 ## Architecture Diagram
 
 Below is the architecture diagram for the Terraform S3 Project:
@@ -56,14 +66,16 @@ Below is the architecture diagram for the Terraform S3 Project:
     git clone https://github.com/jdiaz2001/terraform-s3-project.git
     cd terraform-s3-project
     ```
+2. Authenticate with your AWS SSO Profile
+    ```bash
+    aws sso login --sso-session "Profile_Name" 
+    ```
 
-2. Initialize the Terraform working directory:
+3. Initialize the Terraform working directory:
     ```bash
     terraform init
     ```
-
-3. Review and customize the variables in `variables.tf` or create a `terraform.tfvars` file to override defaults.
-
+    
 4. Plan the infrastructure changes:
     ```bash
     terraform plan
@@ -75,17 +87,6 @@ Below is the architecture diagram for the Terraform S3 Project:
     ```
 
 6. Confirm the changes and note the output values.
-
-## Configuration
-
-The following variables can be customized:
-
-| Variable           | Description                          | 
-|--------------------|--------------------------------------|
-| `domain`           | Domain name for the website          |
-| `aws region`       | AWS region for the bucket            |
-| `profile`          | AWS SSO Profile to be used           |
-| `route53`          | ZXXXX ... Domain Hosted Zone ID      |
 
 ## Outputs
 - `CloudFront URL`: URL for the Cloud Front Distribution.
