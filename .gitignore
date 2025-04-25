@@ -4,6 +4,7 @@
 *.lock.hcl
 *.plan
 *.tfvars
+*.DS_Store
 
 # Ignore Terraform directories
 .terraform/
