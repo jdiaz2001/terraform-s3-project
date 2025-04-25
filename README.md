@@ -15,6 +15,12 @@ This project is a Terraform configuration for provisioning and managing an Amazo
 - AWS CLI installed and configured with appropriate credentials.
 - An AWS account with permissions to create S3 buckets.
 
+## Architecture Diagram
+
+Below is the architecture diagram for the Terraform S3 Project:
+
+![Terraform S3 Project Architecture](images/terraform-s3-diagram.png)
+
 ## Usage
 
 1. Clone the repository:
