@@ -1,0 +1,4 @@
+domain          = "your_domain_URL"                 # The subdomain name for the website
+aws_region      = "the_AWS_Region_to_use"           # AWS Region
+profile         = "your_SSO_user_profile"           # AWS SSO Profile to be used
+route53_zone_id = "ZXXXXXX_Zone_ID_of_your_domain"  # Domain Hosted Zone ID

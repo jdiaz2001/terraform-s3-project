@@ -4,8 +4,8 @@ resource "aws_route53_zone" "example" {
 
 # NS delegation from test.mynsmdev.org to mynsmdev.org
 resource "aws_route53_record" "test_subdomain_ns" {
-  allow_overwrite = true
-  zone_id = var.route53_zone_id
+  allow_overwrite = true # Allow overwriting existing records
+  zone_id = var.route53_zone_id # The hosted zone ID for the parent domain
   name    = var.domain
   type    = "NS"
   ttl     = 300
