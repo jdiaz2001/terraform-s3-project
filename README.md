@@ -1,6 +1,6 @@
 # Terraform S3 Project
 
-This project is a Terraform configuration. It sets up a secure and scalable static website hosting architecture using AWS services. It is designed to demonstrate infrastructure as code (IaC) principles and provide a reusable template for Static Website.
+This project is a Terraform configuration. It sets up a secure and scalable static website hosting architecture using AWS services. It is designed to demonstrate infrastructure as code (IaC) principles and provide a reusable template for an S3 Static Website.
 
 ## Features
 ### Amazon S3 – Static Website Hosting
@@ -41,10 +41,10 @@ This project is a Terraform configuration. It sets up a secure and scalable stat
 
 - `AWS CLI Installed:` Ensure the AWS CLI is installed on your local machine.
 - `Terraform Installed:` Ensure Terraform is installed on your local machine.
-- `AWS IAM Identity Center (SSO):` We'll use AWS IAM Identity Center to provision access for our user.
-- `SSO Authentication:` The user will authenticate via SSO into the target AWS account where resources will be deployed.
+- `AWS IAM Identity Center (SSO):` We will use AWS IAM Identity Center to provision access for our user. Make sure to provide the necessary access to all the AWS Services used in this project.
+- `SSO Authentication:` Our user account will authenticate via SSO into the target AWS account where resources will be deployed.
 
-- `Review and customize` the variables in `variables.tf` or create a `terraform.tfvars` file to override defaults.
+- `Review and customize` the variables in `variables.tf` and `terraform.tfvars.example` files to override defaults.
 
     | Variable           | Description                          | 
     |--------------------|--------------------------------------|
