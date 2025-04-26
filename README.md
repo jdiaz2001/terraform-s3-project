@@ -5,7 +5,7 @@ This project is a Terraform configuration. It sets up a secure and scalable stat
 ## Features
 ### Amazon S3 – Static Website Hosting
 - Stores static files like `index.html` and `error.html`.
-- Configured with **static website hosting** enabled.
+- Configured with **static website hosting** disabled.
 - **Public access is blocked** to prevent direct access to the S3 URL.
 - Acts as the **origin** for CloudFront using **Origin Access Control (OAC)**.
 
@@ -13,15 +13,15 @@ This project is a Terraform configuration. It sets up a secure and scalable stat
 - Serves content from the S3 bucket globally with low latency.
 - Custom domain (e.g., `www.example.com`) integrated using **ACM SSL certificate**.
 - Enforces **HTTPS via redirect**.
-- **Origin Access Control** restricts direct S3 access, allowing only CloudFront.
+- **Origin Access Control** restricts direct S3 access, allowing 'ONLY' CloudFront.
 
 ### AWS WAF – Web Application Firewall
 - Protects the CloudFront distribution.
-- Blocks malicious traffic and common web exploits.
-- Can be configured with AWS Managed Rules or custom rule sets.
+- Blocks malicious traffic and common web exploits. 
+- Can be configured with AWS Managed Rules or custom rule sets. But the current rules enabled are `FREE`.
 
 ### Amazon CloudWatch – Monitoring & Alerts
-- Monitors:
+- Monitors the Cloud Front Distribution:
   - **4xx / 5xx error rates**
   - **Cache hit rate**
   - **Origin latency**
@@ -41,9 +41,8 @@ This project is a Terraform configuration. It sets up a secure and scalable stat
 
 - `AWS CLI Installed:` Ensure the AWS CLI is installed on your local machine.
 - `Terraform Installed:` Ensure Terraform is installed on your local machine.
-- `AWS IAM Identity Center (SSO):` We will use AWS IAM Identity Center to provision access for our user. Make sure to provide the necessary access to all the AWS Services used in this project.
+- `AWS IAM Identity Center (SSO):` We will use AWS IAM Identity Center to provision access for our user. Make sure to provide the necessary access to all the AWS Services used in this project. You can setup AWS `Access Keys` as well; but for `security` I never save any AWS access keys on my local machine.
 - `SSO Authentication:` Our user account will authenticate via SSO into the target AWS account where resources will be deployed.
-
 - `Review and customize` the variables in `variables.tf` and `terraform.tfvars.example` files to override defaults.
 
     | Variable           | Description                          | 
@@ -91,6 +90,7 @@ Below is the architecture diagram for the Terraform S3 Project:
 
 ## Outputs
 - `CloudFront URL`: URL for the Cloud Front Distribution.
+- `Domian URL`: The URL of the website
 
 ## Cleanup
 
