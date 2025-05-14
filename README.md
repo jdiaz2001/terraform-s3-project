@@ -76,17 +76,22 @@ Below is the architecture diagram for the Terraform S3 Project:
     terraform init
     ```
 
-4. Plan the infrastructure changes:
+4. Validate the infrastructure changes:
+    ```bash
+    terraform validate
+    ```
+
+5. Plan the infrastructure changes:
     ```bash
     terraform plan
     ```
 
-5. Apply the configuration to create the S3 bucket:
+6. Apply the configuration to create the S3 bucket:
     ```bash
     terraform apply
     ```
 
-6. Confirm the changes and note the output values.
+7. Confirm the changes and note the output values.
 
 ## Outputs
 - `CloudFront URL`: URL for the Cloud Front Distribution.
